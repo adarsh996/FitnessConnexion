@@ -1,0 +1,167 @@
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+.dark-mode .header {
+    background-color: #1e1e1e;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.dark-mode .logo a {
+    color: #e0e0e0;
+}
+
+.dark-mode .nav ul li a {
+    color: #e0e0e0;
+}
+
+.dark-mode .nav ul li a:hover {
+    color: var(--primary-color);
+}
+
+.dark-mode .mobile-menu {
+    background-color: #1e1e1e;
+}
+
+.dark-mode .mobile-menu ul li a {
+    color: #e0e0e0;
+}
+
+.dark-mode .special-offer,
+.dark-mode .features,
+.dark-mode .contact,
+.dark-mode .auth-container,
+.dark-mode .members-table-container,
+.dark-mode .attendance-stats,
+.dark-mode .dashboard-card,
+.dark-mode .modal-content {
+    background-color: #1e1e1e;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .offer-card,
+.dark-mode .feature-item,
+.dark-mode .contact-form,
+.dark-mode .stat-card {
+    background-color: #2d2d2d;
+}
+
+.dark-mode table {
+    color: #e0e0e0;
+}
+
+.dark-mode th {
+    background-color: #2d2d2d;
+}
+
+.dark-mode tr:hover {
+    background-color: #2d2d2d;
+}
+
+.dark-mode .footer {
+    background-color: #121212;
+}
+
+.dark-mode .footer-links ul li a,
+.dark-mode .footer-contact p {
+    color: #b0b0b0;
+}
+
+.dark-mode .form-group input,
+.dark-mode .form-group textarea,
+.dark-mode .form-group select,
+.dark-mode .search-box input,
+.dark-mode .date-filter input {
+    background-color: #2d2d2d;
+    border-color: #3d3d3d;
+    color: #e0e0e0;
+}
+
+.dark-mode .form-group input:focus,
+.dark-mode .form-group textarea:focus,
+.dark-mode .form-group select:focus {
+    box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.3);
+}
+
+.dark-mode .close-modal-btn {
+    background-color: #2d2d2d;
+    color: #e0e0e0;
+}
+
+.dark-mode .tab-btn {
+    color: #b0b0b0;
+}
+
+.dark-mode .method-card:not(.active) {
+    background-color: #2d2d2d;
+}
+
+.dark-mode .scanner-placeholder {
+    background-color: #2d2d2d;
+}
+
+.dark-mode .member-card {
+    background-color: #2d2d2d;
+    border-color: #3d3d3d;
+}
+
+.dark-mode .animated-bg {
+    background: linear-gradient(135deg, #121212 0%, #2d2d2d 100%);
+}
+
+.dark-mode .animated-bg:before,
+.dark-mode .animated-bg:after {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Neon Effect for Dark Mode */
+.dark-mode .theme-switch .slider {
+    box-shadow: 0 0 10px var(--primary-color);
+}
+
+.dark-mode .btn-primary {
+    box-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+}
+
+.dark-mode .btn-primary:hover {
+    box-shadow: 0 0 15px rgba(255, 107, 107, 0.8);
+}
+
+.dark-mode .btn-secondary {
+    box-shadow: 0 0 10px rgba(78, 205, 196, 0.5);
+}
+
+.dark-mode .btn-secondary:hover {
+    box-shadow: 0 0 15px rgba(78, 205, 196, 0.8);
+}
+
+.dark-mode .status-badge.active {
+    box-shadow: 0 0 8px rgba(0, 184, 148, 0.5);
+}
+
+.dark-mode .status-badge.expired {
+    box-shadow: 0 0 8px rgba(214, 48, 49, 0.5);
+}
+
+.dark-mode .status-badge.inactive {
+    box-shadow: 0 0 8px rgba(253, 203, 110, 0.5);
+}
+
+.dark-mode .live-badge {
+    box-shadow: 0 0 8px rgba(214, 48, 49, 0.5);
+    animation: pulse 2s infinite, neonPulse 2s infinite;
+}
+
+@keyframes neonPulse {
+    0% {
+        box-shadow: 0 0 8px rgba(214, 48, 49, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 15px rgba(214, 48, 49, 0.8);
+    }
+    100% {
+        box-shadow: 0 0 8px rgba(214, 48, 49, 0.5);
+    }
+}

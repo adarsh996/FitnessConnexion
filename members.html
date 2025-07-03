@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Members - Fitness Connexion</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/dark-mode.css" id="dark-mode-style" disabled>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Pacifico&family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+    
+    <!-- Header/Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">FITNESS <span>CONNEXION</span></a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="members.html" class="active">Members</a></li>
+                    <li><a href="attendance.html">Attendance</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="login.html" class="btn-login">Login</a></li>
+                    <li>
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox" />
+                                <div class="slider round">
+                                    <i class="fas fa-moon"></i>
+                                    <i class="fas fa-sun"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="members.html" class="active">Members</a></li>
+            <li><a href="attendance.html">Attendance</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="login.html" class="btn-login">Login</a></li>
+            <li>
+                <div class="theme-switch-wrapper">
+                    <label class="theme-switch" for="checkbox-mobile">
+                        <input type="checkbox" id="checkbox-mobile" />
+                        <div class="slider round">
+                            <i class="fas fa-moon"></i>
+                            <i class="fas fa-sun"></i>
+                        </div>
+                    </label>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Members Section -->
+    <section class="members-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>GYM <span>MEMBERS</span></h2>
+                <div class="actions">
+                    <button class="btn btn-primary" id="addMemberBtn"><i class="fas fa-plus"></i> Add Member</button>
+                    <div class="search-box">
+                        <input type="text" placeholder="Search members..." id="searchMembers">
+                        <i class="fas fa-search"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="members-table-container animate-slide-up">
+                <table id="membersTable" class="display">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>Membership</th>
+                            <th>Join Date</th>
+                            <th>Expiry</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Data will be loaded from database -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add Member Modal -->
+    <div class="modal" id="addMemberModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>ADD NEW MEMBER</h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="addMemberForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="memberName">Full Name</label>
+                            <input type="text" id="memberName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="memberPhone">Phone</label>
+                            <input type="tel" id="memberPhone" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="memberEmail">Email</label>
+                            <input type="email" id="memberEmail">
+                        </div>
+                        <div class="form-group">
+                            <label for="memberDob">Date of Birth</label>
+                            <input type="date" id="memberDob">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="memberGender">Gender</label>
+                            <select id="memberGender">
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="memberPlan">Membership Plan</label>
+                            <select id="memberPlan" required>
+                                <option value="">Select Plan</option>
+                                <option value="3months">3 Months - ₹5999</option>
+                                <option value="6months">6 Months - ₹9999</option>
+                                <option value="12months">12 Months - ₹15999</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="memberJoinDate">Join Date</label>
+                            <input type="date" id="memberJoinDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="memberAddress">Address</label>
+                            <textarea id="memberAddress" rows="2"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary close-modal-btn">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save Member</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- View/Edit Member Modal -->
+    <div class="modal" id="memberDetailsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>MEMBER DETAILS</h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="member-profile">
+                    <div class="profile-image">
+                        <img src="images/default-avatar.jpg" alt="Member" id="memberProfileImage">
+                        <button class="btn btn-small btn-primary" id="uploadImageBtn">Upload Image</button>
+                        <input type="file" id="imageUpload" style="display: none;">
+                    </div>
+                    <div class="profile-info">
+                        <h4 id="memberDetailName">John Doe</h4>
+                        <p id="memberDetailId">ID: FC-1001</p>
+                        <div class="member-status" id="memberDetailStatus">
+                            <span class="status-badge active">Active</span>
+                            <span class="expiry-date">Expires: 15 Oct 2023</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="member-tabs">
+                    <div class="tabs-header">
+                        <button class="tab-btn active" data-tab="details">Details</button>
+                        <button class="tab-btn" data-tab="attendance">Attendance</button>
+                        <button class="tab-btn" data-tab="payments">Payments</button>
+                    </div>
+                    
+                    <div class="tab-content active" id="details-tab">
+                        <div class="details-grid">
+                            <div class="detail-item">
+                                <label>Email:</label>
+                                <p id="detailEmail">john.doe@example.com</p>
+                            </div>
+                            <div class="detail-item">
+                                <label>Phone:</label>
+                                <p id="detailPhone">+91 9876543210</p>
+                            </div>
+                            <div class="detail-item">
+                                <label>Gender:</label>
+                                <p id="detailGender">Male</p>
+                            </div>
+                            <div class="detail-item">
+                                <label>Age:</label>
+                                <p id="detailAge">28</p>
+                            </div>
+                            <div class="detail-item">
+                                <label>Join Date:</label>
+                                <p id="detailJoinDate">15 Jul 2023</p>
+                            </div>
+                            <div class="detail-item">
+                                <label>Membership:</label>
+                                <p id="detailMembership">6 Months - ₹9999</p>
+                            </div>
+                            <div class="detail-item full-width">
+                                <label>Address:</label>
+                                <p id="detailAddress">123 Main Street, Kandivali East, Mumbai, Maharashtra 400101</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="attendance-tab">
+                        <div class="attendance-stats">
+                            <div class="stat-card">
+                                <h5>Total Visits</h5>
+                                <p class="stat-value">24</p>
+                            </div>
+                            <div class="stat-card">
+                                <h5>Last Visit</h5>
+                                <p class="stat-value">2 days ago</p>
+                            </div>
+                            <div class="stat-card">
+                                <h5>Avg./Week</h5>
+                                <p class="stat-value">3.5</p>
+                            </div>
+                        </div>
+                        <div class="attendance-table-container">
+                            <table id="attendanceTable">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Time In</th>
+                                        <th>Time Out</th>
+                                        <th>Duration</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>10 Oct 2023</td>
+                                        <td>07:30 AM</td>
+                                        <td>09:15 AM</td>
+                                        <td>1h 45m</td>
+                                    </tr>
+                                    <tr>
+                                        <td>08 Oct 2023</td>
+                                        <td>06:45 AM</td>
+                                        <td>08:30 AM</td>
+                                        <td>1h 45m</td>
+                                    </tr>
+                                    <tr>
+                                        <td>05 Oct 2023</td>
+                                        <td>05:30 PM</td>
+                                        <td>07:00 PM</td>
+                                        <td>1h 30m</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="payments-tab">
+                        <div class="payment-actions">
+                            <button class="btn btn-primary btn-small" id="addPaymentBtn">Add Payment</button>
+                        </div>
+                        <div class="payments-table-container">
+                            <table id="paymentsTable">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Amount</th>
+                                        <th>Method</th>
+                                        <th>Plan</th>
+                                        <th>Valid Until</th>
+                                        <th>Receipt</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>15 Jul 2023</td>
+                                        <td>₹9999</td>
+                                        <td>UPI</td>
+                                        <td>6 Months</td>
+                                        <td>15 Jan 2024</td>
+                                        <td><button class="btn-link">View</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="printMemberBtn"><i class="fas fa-print"></i> Print</button>
+                <button class="btn btn-primary" id="editMemberBtn"><i class="fas fa-edit"></i> Edit</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/database.js"></script>
+</body>
+</html>

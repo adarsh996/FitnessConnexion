@@ -1,0 +1,73 @@
+/* Animation Classes */
+.animate-pop-in {
+    animation: popIn 0.8s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+.animate-slide-up {
+    animation: slideUp 0.8s ease both;
+}
+
+.animate-fade-in {
+    animation: fadeIn 1s ease both;
+}
+
+/* Animation Delays */
+.animate-pop-in:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.animate-pop-in:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.animate-pop-in:nth-child(3) {
+    animation-delay: 0.5s;
+}
+
+.animate-slide-up:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.animate-slide-up:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.animate-slide-up:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.animate-slide-up:nth-child(4) {
+    animation-delay: 0.8s;
+}
+
+/* Keyframes */
+@keyframes popIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

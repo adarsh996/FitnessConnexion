@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance - Fitness Connexion</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/dark-mode.css" id="dark-mode-style" disabled>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Pacifico&family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+    
+    <!-- Header/Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">FITNESS <span>CONNEXION</span></a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="members.html">Members</a></li>
+                    <li><a href="attendance.html" class="active">Attendance</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="login.html" class="btn-login">Login</a></li>
+                    <li>
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox" />
+                                <div class="slider round">
+                                    <i class="fas fa-moon"></i>
+                                    <i class="fas fa-sun"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="members.html">Members</a></li>
+            <li><a href="attendance.html" class="active">Attendance</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="login.html" class="btn-login">Login</a></li>
+            <li>
+                <div class="theme-switch-wrapper">
+                    <label class="theme-switch" for="checkbox-mobile">
+                        <input type="checkbox" id="checkbox-mobile" />
+                        <div class="slider round">
+                            <i class="fas fa-moon"></i>
+                            <i class="fas fa-sun"></i>
+                        </div>
+                    </label>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Attendance Section -->
+    <section class="attendance-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>GYM <span>ATTENDANCE</span></h2>
+                <div class="actions">
+                    <div class="date-filter">
+                        <input type="date" id="attendanceDate" value="">
+                        <button class="btn btn-primary" id="todayBtn">Today</button>
+                    </div>
+                    <div class="search-box">
+                        <input type="text" placeholder="Search attendance..." id="searchAttendance">
+                        <i class="fas fa-search"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="attendance-stats animate-slide-up">
+                <div class="stat-card">
+                    <h5>Today's Attendance</h5>
+                    <p class="stat-value">24</p>
+                    <p class="stat-change up"><i class="fas fa-arrow-up"></i> 3 from yesterday</p>
+                </div>
+                <div class="stat-card">
+                    <h5>Current In Gym</h5>
+                    <p class="stat-value">8</p>
+                    <div class="live-badge">LIVE</div>
+                </div>
+                <div class="stat-card">
+                    <h5>Avg. Daily</h5>
+                    <p class="stat-value">32</p>
+                    <p class="stat-change down"><i class="fas fa-arrow-down"></i> 2 from last week</p>
+                </div>
+                <div class="stat-card">
+                    <h5>Peak Hour</h5>
+                    <p class="stat-value">7-9 AM</p>
+                    <p class="stat-change">42 visitors</p>
+                </div>
+            </div>
+            
+            <div class="attendance-table-container animate-slide-up">
+                <table id="attendanceTable" class="display">
+                    <thead>
+                        <tr>
+                            <th>Member ID</th>
+                            <th>Name</th>
+                            <th>Time In</th>
+                            <th>Time Out</th>
+                            <th>Duration</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Data will be loaded from database -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Check In Modal -->
+    <div class="modal" id="checkInModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>CHECK IN MEMBER</h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="checkin-methods">
+                    <div class="method-card active" data-method="search">
+                        <i class="fas fa-search"></i>
+                        <h4>Search Member</h4>
+                    </div>
+                    <div class="method-card" data-method="scan">
+                        <i class="fas fa-qrcode"></i>
+                        <h4>Scan QR Code</h4>
+                    </div>
+                    <div class="method-card" data-method="manual">
+                        <i class="fas fa-keyboard"></i>
+                        <h4>Manual Entry</h4>
+                    </div>
+                </div>
+                
+                <div class="checkin-content" id="searchMethod">
+                    <div class="search-box">
+                        <input type="text" placeholder="Search member by name or ID..." id="memberSearch">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="search-results">
+                        <div class="member-card">
+                            <div class="member-info">
+                                <div class="member-image">
+                                    <img src="images/default-avatar.jpg" alt="Member">
+                                </div>
+                                <div class="member-details">
+                                    <h5>John Doe</h5>
+                                    <p>ID: FC-1001</p>
+                                    <p>Membership: 6 Months (Expires 15 Jan 2024)</p>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary btn-small checkin-btn">Check In</button>
+                        </div>
+                        <div class="member-card">
+                            <div class="member-info">
+                                <div class="member-image">
+                                    <img src="images/default-avatar.jpg" alt="Member">
+                                </div>
+                                <div class="member-details">
+                                    <h5>Jane Smith</h5>
+                                    <p>ID: FC-1002</p>
+                                    <p>Membership: 3 Months (Expires 15 Nov 2023)</p>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary btn-small checkin-btn">Check In</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="checkin-content" id="scanMethod" style="display: none;">
+                    <div class="scanner-container">
+                        <div class="scanner-placeholder">
+                            <i class="fas fa-qrcode"></i>
+                            <p>QR Scanner will appear here</p>
+                        </div>
+                        <p class="scan-alternate">Or enter code manually:</p>
+                        <input type="text" placeholder="Enter member code">
+                    </div>
+                </div>
+                
+                <div class="checkin-content" id="manualMethod" style="display: none;">
+                    <form id="manualCheckinForm">
+                        <div class="form-group">
+                            <label for="manualMemberId">Member ID</label>
+                            <input type="text" id="manualMemberId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="manualTimeIn">Time In</label>
+                            <input type="time" id="manualTimeIn" required>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary close-modal-btn">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Check In</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/database.js"></script>
+</body>
+</html>

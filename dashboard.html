@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Fitness Connexion</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/dark-mode.css" id="dark-mode-style" disabled>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Pacifico&family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+    
+    <!-- Header/Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">FITNESS <span>CONNEXION</span></a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="members.html">Members</a></li>
+                    <li><a href="attendance.html">Attendance</a></li>
+                    <li><a href="dashboard.html" class="active">Dashboard</a></li>
+                    <li><a href="login.html" class="btn-login">Login</a></li>
+                    <li>
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox" />
+                                <div class="slider round">
+                                    <i class="fas fa-moon"></i>
+                                    <i class="fas fa-sun"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="members.html">Members</a></li>
+            <li><a href="attendance.html">Attendance</a></li>
+            <li><a href="dashboard.html" class="active">Dashboard</a></li>
+            <li><a href="login.html" class="btn-login">Login</a></li>
+            <li>
+                <div class="theme-switch-wrapper">
+                    <label class="theme-switch" for="checkbox-mobile">
+                        <input type="checkbox" id="checkbox-mobile" />
+                        <div class="slider round">
+                            <i class="fas fa-moon"></i>
+                            <i class="fas fa-sun"></i>
+                        </div>
+                    </label>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Dashboard Section -->
+    <section class="dashboard-section">
+        <div class="container">
+            <div class="dashboard-header">
+                <h2>GYM <span>DASHBOARD</span></h2>
+                <div class="dashboard-actions">
+                    <div class="date-range">
+                        <button class="btn btn-small active">Today</button>
+                        <button class="btn btn-small">Week</button>
+                        <button class="btn btn-small">Month</button>
+                        <button class="btn btn-small">Year</button>
+                    </div>
+                    <button class="btn btn-primary btn-small" id="refreshDashboard"><i class="fas fa-sync-alt"></i> Refresh</button>
+                </div>
+            </div>
+            
+            <div class="dashboard-stats animate-slide-up">
+                <div class="stat-card">
+                    <h5>Total Members</h5>
+                    <p class="stat-value">248</p>
+                    <p class="stat-change up"><i class="fas fa-arrow-up"></i> 12 this month</p>
+                </div>
+                <div class="stat-card">
+                    <h5>Active Members</h5>
+                    <p class="stat-value">198</p>
+                    <p class="stat-percentage">80%</p>
+                </div>
+                <div class="stat-card">
+                    <h5>Today's Attendance</h5>
+                    <p class="stat-value">42</p>
+                    <p class="stat-change up"><i class="fas fa-arrow-up"></i> 5 from yesterday</p>
+                </div>
+                <div class="stat-card">
+                    <h5>Monthly Revenue</h5>
+                    <p class="stat-value">₹2,45,600</p>
+                    <p class="stat-change down"><i class="fas fa-arrow-down"></i> 8% from last month</p>
+                </div>
+            </div>
+            
+            <div class="dashboard-grid">
+                <div class="dashboard-card chart-card animate-slide-up">
+                    <div class="card-header">
+                        <h5>Attendance Trend</h5>
+                        <div class="card-actions">
+                            <button class="btn-icon active" data-period="week"><i class="fas fa-calendar-week"></i></button>
+                            <button class="btn-icon" data-period="month"><i class="fas fa-calendar-alt"></i></button>
+                            <button class="btn-icon" data-period="year"><i class="fas fa-calendar"></i></button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="attendanceChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="dashboard-card chart-card animate-slide-up">
+                    <div class="card-header">
+                        <h5>Membership Distribution</h5>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="membershipChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="dashboard-card recent-activity animate-slide-up">
+                    <div class="card-header">
+                        <h5>Recent Activity</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-user-plus"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <p>New member registered: <strong>Rahul Sharma</strong></p>
+                                    <p class="activity-time">10 minutes ago</p>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-dumbbell"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <p><strong>Priya Patel</strong> checked in</p>
+                                    <p class="activity-time">25 minutes ago</p>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-rupee-sign"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <p>Payment received from <strong>Vikram Singh</strong> for 12 Months plan</p>
+                                    <p class="activity-time">1 hour ago</p>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-user-clock"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <p>Membership of <strong>Anjali Mehta</strong> expired</p>
+                                    <p class="activity-time">2 hours ago</p>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-dumbbell"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <p><strong>Rajesh Kumar</strong> checked out after 1h 45m workout</p>
+                                    <p class="activity-time">3 hours ago</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dashboard-card upcoming-renewals animate-slide-up">
+                    <div class="card-header">
+                        <h5>Upcoming Renewals</h5>
+                        <div class="card-actions">
+                            <button class="btn-icon active" data-days="7">7D</button>
+                            <button class="btn-icon" data-days="15">15D</button>
+                            <button class="btn-icon" data-days="30">30D</button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="renewal-list">
+                            <div class="renewal-item">
+                                <div class="renewal-info">
+                                    <h6>Sanjay Verma</h6>
+                                    <p>Expires in 2 days</p>
+                                </div>
+                                <div class="renewal-actions">
+                                    <button class="btn-icon"><i class="fas fa-phone"></i></button>
+                                    <button class="btn-icon"><i class="fas fa-envelope"></i></button>
+                                    <button class="btn-icon"><i class="fas fa-whatsapp"></i></button>
+                                </div>
+                            </div>
+                            <div class="renewal-item">
+                                <div class="renewal-info">
+                                    <h6>Neha Gupta</h6>
+                                    <p>Expires in 3 days</p>
+                                </div>
+                                <div class="renewal-actions">
+                                    <button class="btn-icon"><i class="fas fa-phone"></i></button>
+                                    <button class="btn-icon"><i class="fas fa-envelope"></i></button>
+                                    <button class="btn-icon"><i class="fas fa-whatsapp"></i></button>
+                                </div>
+                            </div>
+                            <div class="renewal-item">
+                                <div class="renewal-info">
+                                    <h6>Amit Joshi</h6>
+                                    <p>Expires in 5 days</p>
+                                </div>
+                                <div class="renewal-actions">
+                                    <button class="btn-icon"><i class="fas fa-phone"></i></button>
+                                    <button class="btn-icon"><i class="fas fa-envelope"></i></button>
+                                    <button class="btn-icon"><i class="fas fa-whatsapp"></i></button>
+                                </div>
+                            </div>
+                            <div class="renewal-item">
+                                <div class="renewal-info">
+                                    <h6>Pooja Shah</h6>
+                                    <p>Expires in 6 days</p>
+                                </div>
+                                <div class="renewal-actions">
+                                    <button class="btn-icon"><i class="fas fa-phone"></i></button>
+                                    <button class="btn-icon"><i class="fas fa-envelope"></i></button>
+                                    <button class="btn-icon"><i class="fas fa-whatsapp"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/database.js"></script>
+</body>
+</html>
